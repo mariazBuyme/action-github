@@ -1,8 +1,8 @@
 name: First Workflow
-on: workflow_dispatch
+on: [push]
 
 jobs:
-  run-first-job:
+  run-first-command:
     name: Run First Job
     runs-on: ubuntu-latest
     steps:
@@ -12,3 +12,9 @@ jobs:
         run: |  
           npm -v
           node -v
+  run-second-job:
+    name: Run windows Job
+    runs-on: windows-latest
+    steps:
+      - name: Run a windows script
+        run: echo Hello, windows world!
