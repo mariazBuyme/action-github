@@ -1,5 +1,5 @@
 name: First Workflow
-on: [push]
+on: [ push ]
 
 jobs:
   run-first-command:
@@ -9,12 +9,19 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
       - name: Second step
-        run: |  
+        run: |
           npm -v
           node -v
-  run-second-job:
+  run-parallel-job:
     name: Run windows Job
     runs-on: windows-latest
     steps:
       - name: Run a windows script
         run: echo Hello, windows world!
+  run-second-job:
+    name: Second Job
+    runs-on: macos-latest
+    needs: run-first-command
+    steps:
+      - name: Second Step of second job
+        run: echo "Hello Second World macos"
